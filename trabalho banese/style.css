@@ -1,0 +1,141 @@
+header{
+  display: flex;
+}
+
+#logo{
+  height: 200px;
+  width: 290px;
+  background-image: url(assets/img/logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: 124px;
+  margin-bottom: 30px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.cabecalho{
+  width: 100%;
+}
+
+.barra{
+  display: flex;
+  justify-content: start;
+  border-bottom-width: 1px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-style: solid;
+  border-color: grey;
+}
+
+.barra, a{
+  margin: 10px;
+  margin-right: 50px;
+  font-size: 20px;
+}
+
+.barra, input{
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.servicos{
+  display: flex;
+  justify-content: left;
+  font-weight: bold;
+}
+
+.servicos, button{
+  background-color: white;
+  border-color: lightgreen;
+  border-width: 2px;
+  border-radius: 4px;
+}
+
+.navbar {
+  position: absolute;
+  right: 490px;
+  top: 8px;
+  background-color: #6da86400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li a {
+  color: rgb(51, 152, 51);
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.nav-links li a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.carrossel{
+  margin-left: 124px;
+  overflow: hidden;
+}
+
+.carrossel, img{
+  border-radius: 20px;
+}
+
+#imagem1{
+  background-image: url(assets/img/carrossel.jpg);
+  width: 1280px;
+  height: 475px;
+  background-size: cover;
+}
+
+#imagem2{
+  background-image: url(assets/img/carrossel2_banese.jpg);
+  width: 1280px;
+  height: 475px;
+  background-size: cover;
+}
+
+.container{
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(0);
+  width: 2560px;
+  height: 475px;
+}
+
+.opcoes{
+  margin-left: 58px;
+}
+
+#chatbot{
+  position: fixed;
+  bottom: 10px;
+  right: 110px;
+  z-index: 1000;
+  height: 100px;
+  width: 100px;
+  background-image: url(assets/img/chatbot.png);
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.chatbot:hover{
+  cursor: pointer;
+}
