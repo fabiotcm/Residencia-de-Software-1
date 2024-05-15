@@ -39,3 +39,44 @@ banese.addEventListener('click', ()=>{
   }
 })
 
+var bot = document.getElementById('chatbot');
+const chat = document.getElementById('chat');
+
+bot.addEventListener('click', ()=>{
+  bot.style.display = 'none';
+  chat.style.display = 'block';
+})
+
+//chat.addEventListener('click', ()=>{
+//  bot.style.display = 'block';
+//  chat.style.display = 'none';
+//})
+
+const messageBar = document.querySelector(".bar-wrapper input");
+const sendBtn = document.querySelector(".bar-wrapper button");
+const messageBox = document.querySelector(".message-box");
+
+sendBtn.onclick = function() {
+  if(messageBar.value.length > 0){
+    let message = 
+    `<div class="chat message">
+     <img style="border-radius: 50%;" src="assets/img/usuario.avif"> 
+     <span>${messageBar.value}
+     </span></div>`;
+
+    messageBox.insertAdjacentHTML("beforeend", message);
+    messageBar.value = "";
+
+    let response =
+    `<div class="chat response">
+    <img src="assets/img/chatbot.png">
+    <span>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore.
+    </span>
+    </div>`
+
+    setTimeout(() => {
+      messageBox.insertAdjacentHTML("beforeend", response);
+    }, 600);
+  }
+}
