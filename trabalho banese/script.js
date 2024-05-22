@@ -47,10 +47,12 @@ bot.addEventListener('click', ()=>{
   chat.style.display = 'block';
 })
 
-//chat.addEventListener('click', ()=>{
-//  bot.style.display = 'block';
-//  chat.style.display = 'none';
-//})
+const returnbtn = document.getElementById('return');
+
+returnbtn.addEventListener('click', ()=>{
+  bot.style.display = 'block';
+  chat.style.display = 'none';
+})
 
 const messageBar = document.querySelector(".bar-wrapper input");
 const sendBtn = document.querySelector(".bar-wrapper button");
