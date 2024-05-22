@@ -1,5 +1,5 @@
 const baneseimg = ['assets/img/carrossel.jpg', 'assets/img/carrossel2_banese.jpg'];
-const mulviimg = ['assets/img/carrossel1_mulvi.jpg', 'assets/img/carrossel.jpg']
+const mulviimg = ['assets/img/carrossel1_mulvi.jpg', 'assets/img/carrossel.jpg'];
 
 const imgs = document.querySelector(".container");
 let img = document.querySelectorAll(".imagem");
@@ -55,28 +55,43 @@ bot.addEventListener('click', ()=>{
 const messageBar = document.querySelector(".bar-wrapper input");
 const sendBtn = document.querySelector(".bar-wrapper button");
 const messageBox = document.querySelector(".message-box");
+const options = {
+  method : 'GET',
+  headers: {
+    'X-Api-Key': '8sR5m6wmUh5lwaQuxiMbOQ==twZWMjZqzgje4Yja'
+  }
+};
 
-sendBtn.onclick = function() {
+
+
+sendBtn.onclick = async function() {
   if(messageBar.value.length > 0){
     let message = 
     `<div class="chat message">
-     <img style="border-radius: 50%;" src="assets/img/usuario.avif"> 
-     <span>${messageBar.value}
-     </span></div>`;
-
+    <img style="border-radius: 50%;" src="assets/img/usuario.avif"> 
+    <span>${messageBar.value}
+    </span></div>`;
+    
     messageBox.insertAdjacentHTML("beforeend", message);
+    
+    const max_length = messageBar.value.length;
+    console.log(max_length);
+    const url = `https://api.api-ninjas.com/v1/loremipsum?max_length=${max_length}&start_with_lorem_ipsum=false`;
     messageBar.value = "";
 
+    const loremipsum = await fetch(url, options);
+    const data = await loremipsum.json();
+    
     let response =
     `<div class="chat response">
     <img src="assets/img/chatbot.png">
     <span>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore.
+    ${data.text}
     </span>
     </div>`
 
     setTimeout(() => {
       messageBox.insertAdjacentHTML("beforeend", response);
-    }, 600);
+    }, 100);
   }
 }
