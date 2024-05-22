@@ -229,8 +229,32 @@ header{
 }
 
 .chat-bubble{
+  position: relative;
   background-color: white;
-  border-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 10px;
+  max-width: 190px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ponta do balao de fala*/
+.chat-bubble::after{
+  content: '';
+  position: absolute;
+  left: 30px;
+	top: 21.5px;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-right-color: #ffffff;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -21.5px;
+	margin-left: -43px;
 }
 
 .messagebar{
