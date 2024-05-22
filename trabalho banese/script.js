@@ -3,6 +3,8 @@ const mulviimg = ['assets/img/carrossel1_mulvi.jpg', 'assets/img/carrossel.jpg']
 
 const imgs = document.querySelector(".container");
 let img = document.querySelectorAll(".imagem");
+var bot = document.getElementById('chatbot');
+const chat = document.getElementById('chat');
 
 let idx = 0;
 
@@ -19,14 +21,38 @@ function carrossel(){
 setInterval(carrossel, 6000);
 
 
+function closechat(){
+  bot.style.display = 'block';
+  chat.style.display = 'none';
+};
 
+//Resetar a conversa quando o usuario trocar de layout.
+function removeChatMessages(){
+  const messages = document.querySelectorAll('.chat.message, .chat.response');
+  messages.forEach(message => message.remove());
 
+  const greetings =
+    `<div class="chat response">
+      <img src="assets/img/chatbot.png">
+      <div class="chat-bubble">
+        <span>Olá usuário. <br>
+          Como posso te ajudar?
+        </span>
+      </div>
+      </div>`;
+      
+      messageBox.insertAdjacentHTML("beforeend", greetings);
+      closechat();
+};
+    
+    
 mulvi.addEventListener('click', ()=>{
   if (document.getElementById('imagem1').style.backgroundImage != "url('assets/img/carrossel1_mulvi.jpg')") { 
     document.getElementById('imagem1').style.backgroundImage = "url('assets/img/carrossel1_mulvi.jpg')";
     document.getElementById('imagem2').style.backgroundImage = "url('assets/img/banner-home.png')";
     document.getElementById('logo').style.backgroundImage = "url('assets/img/logo_mulvi.png')";  
     document.getElementById('chatbot').style.backgroundImage = "url('assets/img/chatbot_mulvi.png')"
+    removeChatMessages();
   }
 })
 
@@ -36,11 +62,9 @@ banese.addEventListener('click', ()=>{
     document.getElementById('imagem2').style.backgroundImage = "url('assets/img/carrossel2_banese.jpg')";
     document.getElementById('logo').style.backgroundImage = "url('assets/img/logo.png')";  
     document.getElementById('chatbot').style.backgroundImage = "url('assets/img/chatbot.png')"
+    removeChatMessages();
   }
 })
-
-var bot = document.getElementById('chatbot');
-const chat = document.getElementById('chat');
 
 bot.addEventListener('click', ()=>{
   bot.style.display = 'none';
@@ -50,8 +74,7 @@ bot.addEventListener('click', ()=>{
 const returnbtn = document.getElementById('return');
 
 returnbtn.addEventListener('click', ()=>{
-  bot.style.display = 'block';
-  chat.style.display = 'none';
+  closechat();
 })
 
 const scrollToBottom = () => {
