@@ -54,28 +54,36 @@ returnbtn.addEventListener('click', ()=>{
   chat.style.display = 'none';
 })
 
+const scrollToBottom = () => {
+  const chatscroll = document.querySelector(".chatbot-wrapper");
+  chatscroll.scrollTop = messageBox.scrollHeight;
+};
+
 const messageBar = document.querySelector(".bar-wrapper input");
 const sendBtn = document.querySelector(".bar-wrapper button");
 const messageBox = document.querySelector(".message-box");
 const options = {
-  method : 'GET',
+  method: 'GET',
   headers: {
     'X-Api-Key': '8sR5m6wmUh5lwaQuxiMbOQ==twZWMjZqzgje4Yja'
   }
 };
 
-
-
 sendBtn.onclick = async function() {
   if(messageBar.value.length > 0){
     let message = 
     `<div class="chat message">
-    <img style="border-radius: 50%;" src="assets/img/usuario.avif"> 
-    <span>${messageBar.value}
-    </span></div>`;
+      <img style="border-radius: 50%;" src="assets/img/usuario.avif"> 
+      <div class="chat-bubble">
+      <span>
+        ${messageBar.value}
+      </span>
+      </div>
+    </div>`;
     
     messageBox.insertAdjacentHTML("beforeend", message);
-    
+    scrollToBottom(); // Adiciona rolagem após adicionar a mensagem do usuário
+
     const max_length = messageBar.value.length;
     console.log(max_length);
     const url = `https://api.api-ninjas.com/v1/loremipsum?max_length=${max_length}&start_with_lorem_ipsum=false`;
@@ -86,14 +94,17 @@ sendBtn.onclick = async function() {
     
     let response =
     `<div class="chat response">
-    <img src="assets/img/chatbot.png">
-    <span>
-    ${data.text}
-    </span>
-    </div>`
+      <img src="assets/img/chatbot.png">
+      <div class="chat-bubble">
+        <span>
+          ${data.text}
+        </span>
+      </div>
+    </div>`;
 
     setTimeout(() => {
       messageBox.insertAdjacentHTML("beforeend", response);
+      scrollToBottom(); // Adiciona rolagem após adicionar a resposta do bot
     }, 100);
   }
-}
+};
