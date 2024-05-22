@@ -165,7 +165,10 @@ header{
 .chatbot-wrapper{
   width: 100%;
   height: 100vh;
+  max-height: 100%;
   background-color: #eaffeb;
+  overflow: scroll;
+  z-index: 1000;
 }
 
 .chat{
