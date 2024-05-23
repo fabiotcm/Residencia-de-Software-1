@@ -63,15 +63,18 @@ header{
 .dropdown-content {
   display: none;
   position: absolute;
-  left: -110px;
-  background-color:darkgreen;
-  border-radius: 20px;
+  left: -125px;
+  top: 22px;
+  background-color: rgb(0, 103, 56);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
   min-width: 120px;
   z-index: 1;
+  padding-top: 2px;
 }
 
 .mulvi-theme .dropdown-content{
-  background-color: rgb(249, 253, 92);
+  background-color: rgb(225, 230, 99);
 }
 
 .dropdown-content a {
@@ -105,6 +108,7 @@ header{
   background-color:green;
   transition: 0.3s;
   color: white;
+  margin-right: 15.5vw;
 }
 
 #navbar:hover{
@@ -227,11 +231,20 @@ header{
   border-right-color: rgb(225, 230, 99);
 
 }
+
+.mulvi-theme .chat-bubble-user{
+  background-color: rgb(225, 230, 99);
+}
+
+.mulvi-theme .chat-bubble-user::after{
+  border-left-color: rgb(225, 230, 99);
+
+}
  
 *{
   padding: 0;
   margin: 0;
-  font-family: 'Poppins';
+  font-family: Poppins;
   box-sizing: border-box;
 }
 
@@ -310,10 +323,36 @@ header{
   height: 35px;
 }
 
+.chat.message{
+  justify-content: right;
+}
+
+
 .chat-bubble{
   position: relative;
   background-color: white;
   border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 10px;
+  max-width: 190px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.chat-bubble, span{
+  font-size: 14px;
+}
+
+.chat-bubble-user, span{
+  font-size: 14px;
+}
+
+.chat-bubble-user{
+  position: relative;
+  background-color: white;
+  border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   padding: 10px;
@@ -337,6 +376,21 @@ header{
 	border-top: 0;
 	margin-top: -21.5px;
 	margin-left: -43px;
+}
+
+.chat-bubble-user::after{
+  content: '';
+  position: absolute;
+  right: 30px;
+  top: 21.5px;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-left-color: #ffffff;
+  border-right: 0;
+  border-top: 0;
+  margin-top: -21.5px;
+  margin-right: -43px;
 }
 
 .messagebar{
