@@ -1,5 +1,6 @@
-const baneseimg = ['assets/img/carrossel.jpg', 'assets/img/carrossel2_banese.jpg'];
-const mulviimg = ['assets/img/carrossel1_mulvi.jpg', 'assets/img/carrossel.jpg'];
+const baneseimg = "assets/img/chatbot.png";
+const mulviimg = "assets/img/chatbot_mulvi.png";
+var tipo = baneseimg;
 
 const imgs = document.querySelector(".container");
 let img = document.querySelectorAll(".imagem");
@@ -33,7 +34,7 @@ function removeChatMessages(){
 
   const greetings =
     `<div class="chat response">
-      <img src="assets/img/chatbot.png">
+      <img src=${tipo}>
       <div class="chat-bubble">
         <span>Olá usuário. <br>
           Como posso te ajudar?
@@ -45,6 +46,7 @@ function removeChatMessages(){
       closechat();
 };
     
+const navbar = document.getElementById('navbar');
     
 mulvi.addEventListener('click', ()=>{
   if (document.getElementById('imagem1').style.backgroundImage != "url('assets/img/carrossel1_mulvi.jpg')") { 
@@ -52,6 +54,12 @@ mulvi.addEventListener('click', ()=>{
     document.getElementById('imagem2').style.backgroundImage = "url('assets/img/banner-home.png')";
     document.getElementById('logo').style.backgroundImage = "url('assets/img/logo_mulvi.png')";  
     document.getElementById('chatbot').style.backgroundImage = "url('assets/img/chatbot_mulvi.png')"
+    navbar.style.backgroundColor = '#e1e663';
+
+    // Alterar classes
+    navbar.classList.add('mulvi-theme');
+    chat.classList.add('mulvi-theme');
+    tipo = mulviimg;
     removeChatMessages();
   }
 })
@@ -62,6 +70,13 @@ banese.addEventListener('click', ()=>{
     document.getElementById('imagem2').style.backgroundImage = "url('assets/img/carrossel2_banese.jpg')";
     document.getElementById('logo').style.backgroundImage = "url('assets/img/logo.png')";  
     document.getElementById('chatbot').style.backgroundImage = "url('assets/img/chatbot.png')"
+    navbar.style.backgroundColor = '#006738';
+
+    // Alterar classes
+    navbar.classList.remove('mulvi-theme');
+    chat.classList.remove('mulvi-theme');
+    tipo = baneseimg;
+    
     removeChatMessages();
   }
 })
@@ -117,7 +132,7 @@ sendBtn.onclick = async function() {
     
     let response =
     `<div class="chat response">
-      <img src="assets/img/chatbot.png">
+      <img src=${tipo}>
       <div class="chat-bubble">
         <span>
           ${data.text}
