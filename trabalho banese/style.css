@@ -105,14 +105,13 @@ header{
   justify-content: left;
   align-items: center;
   font-size: 18px;
-  background-color:green;
+  background-color:rgb(0, 103, 56);
   transition: 0.3s;
   color: white;
   margin-right: 15.5vw;
 }
 
 #navbar:hover{
-  background-color: #00360f;
   cursor: pointer;
 }
 
