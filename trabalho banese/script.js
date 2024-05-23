@@ -111,12 +111,12 @@ sendBtn.onclick = async function() {
   if(messageBar.value.length > 0){
     let message = 
     `<div class="chat message">
-      <img style="border-radius: 50%;" src="assets/img/usuario.avif"> 
-      <div class="chat-bubble">
+    <div class="chat-bubble-user">
       <span>
         ${messageBar.value}
       </span>
-      </div>
+    </div>
+    <img style="border-radius: 50%;" src="assets/img/usuario.avif"> 
     </div>`;
     
     messageBox.insertAdjacentHTML("beforeend", message);
