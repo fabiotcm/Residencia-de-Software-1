@@ -1,3 +1,4 @@
+//Tipo = Ficar trocando entre banese e mulvi pra mudar a imagem de quem está falando no chat.
 const baneseimg = "assets/img/chatbot.png";
 const mulviimg = "assets/img/chatbot_mulvi.png";
 var tipo = baneseimg;
@@ -7,6 +8,8 @@ let img = document.querySelectorAll(".imagem");
 var bot = document.getElementById('chatbot');
 const chat = document.getElementById('chat');
 
+
+//Container que fica mudando de imagem sozinho
 let idx = 0;
 
 function carrossel(){
@@ -47,7 +50,8 @@ function removeChatMessages(){
 };
     
 const navbar = document.getElementById('navbar');
-    
+ 
+//Mudar o layout da pagina para o estilo mulvi
 mulvi.addEventListener('click', ()=>{
   if (document.getElementById('imagem1').style.backgroundImage != "url('assets/img/carrossel1_mulvi.jpg')") { 
     document.getElementById('imagem1').style.backgroundImage = "url('assets/img/carrossel1_mulvi.jpg')";
@@ -55,7 +59,7 @@ mulvi.addEventListener('click', ()=>{
     document.getElementById('logo').style.backgroundImage = "url('assets/img/logo_mulvi.png')";  
     document.getElementById('chatbot').style.backgroundImage = "url('assets/img/chatbot_mulvi.png')"
     navbar.style.backgroundColor = '#e1e663';
-
+    
     // Alterar classes
     navbar.classList.add('mulvi-theme');
     chat.classList.add('mulvi-theme');
@@ -64,6 +68,7 @@ mulvi.addEventListener('click', ()=>{
   }
 })
 
+//Mudar o layout da pagina para o estilo banese
 banese.addEventListener('click', ()=>{
   if (document.getElementById('imagem1').style.backgroundImage != "url('assets/img/carrossel.jpg')") { 
     document.getElementById('imagem1').style.backgroundImage = "url('assets/img/carrossel.jpg')";
@@ -81,25 +86,30 @@ banese.addEventListener('click', ()=>{
   }
 })
 
+//Transformar o ícone do bot no chat
 bot.addEventListener('click', ()=>{
   bot.style.display = 'none';
   chat.style.display = 'block';
 })
 
-const returnbtn = document.getElementById('return');
 
+//Botao para minimizar o chat e transformar de volta no icone
+const returnbtn = document.getElementById('return');
 returnbtn.addEventListener('click', ()=>{
   closechat();
 })
 
+//Autoscroll do chat toda vez que uma mensagem é enviada
 const scrollToBottom = () => {
   const chatscroll = document.querySelector(".chatbot-wrapper");
   chatscroll.scrollTop = messageBox.scrollHeight;
 };
 
+
 const messageBar = document.querySelector(".bar-wrapper input");
 const sendBtn = document.querySelector(".bar-wrapper button");
 const messageBox = document.querySelector(".message-box");
+//Parametros da API
 const options = {
   method: 'GET',
   headers: {
@@ -107,6 +117,7 @@ const options = {
   }
 };
 
+//Botao para enviar a mensagem.
 sendBtn.onclick = async function() {
   if(messageBar.value.length > 0){
     let message = 
@@ -122,11 +133,13 @@ sendBtn.onclick = async function() {
     messageBox.insertAdjacentHTML("beforeend", message);
     scrollToBottom(); // Adiciona rolagem após adicionar a mensagem do usuário
 
+    //Deixar a mensagem Lorem Ipsum com a quantidade de caracteres igual ao tamanho da mensagem enviada pelo usuário
     const max_length = messageBar.value.length;
-    console.log(max_length);
     const url = `https://api.api-ninjas.com/v1/loremipsum?max_length=${max_length}&start_with_lorem_ipsum=false`;
-    messageBar.value = "";
+    
+    messageBar.value = ""; //Apagar a barra de mensagem após o envio
 
+    //Capturando a resposta da API e adicionando-a na mensagem
     const loremipsum = await fetch(url, options);
     const data = await loremipsum.json();
     
